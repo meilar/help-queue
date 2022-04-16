@@ -8,7 +8,7 @@ function Ticket(props){
     <React.Fragment>
       <h3>{props.location}</h3>
       <h3>{props.names}</h3>
-      (<p><em>{props.issue}</em></p>)
+      <p><em>{props.issue}</em></p>
       <hr />
     </React.Fragment>
   );
