@@ -5,8 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App(){
-  const name = "Thato";
-  const name2 = "Haley";
   return (
     <React.Fragment>
       <div class="container">
