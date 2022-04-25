@@ -4,8 +4,9 @@ import ticketsImage from "./../img/tickets-image.png";
 function Header(){
   return (
     <React.Fragment>
-      <h1>Help Queue</h1>
-      <img src={ticketsImage} alt="tickets" />
+      <div className="jumbotron">
+      <h1 className="display-1">Help Queue</h1>
+      </div>
     </React.Fragment>
   );
 }

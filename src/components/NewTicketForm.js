@@ -20,17 +20,20 @@ class NewTicketForm extends React.Component{
       <React.Fragment>
         <form onSubmit={this.handleNewTicketFormSubmission}>
           <input
+            className="form-control tixForm"
             type="text"
             name="names"
             placeholder='Pair Names' />
           <input
+            className="form-control tixForm"
             type='text'
             name='location'
             placeholder='Location' />
           <textarea
+            className="form-control tixForm"
             name='issue'
             placeholder='Describe your issue.' />
-          <button type='submit'>Help!</button>
+          <button className="btn btn-primary tixForm" type='submit'>Help!</button>
         </form>
       </React.Fragment>
     )}
