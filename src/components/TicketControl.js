@@ -13,6 +13,14 @@ class TicketControl extends React.Component {
     };
   }
 
+  handleDeletingTicket = (id) => {
+    const newMainTicketList = this.state.mainTicketList.filter(ticket => ticket.id !== id);
+    this.setState({
+      mainTicketList: newMainTicketList,
+      selectedTicket: null
+    })
+  }
+
   handleChangingSelectedTicket = (id) => {
     const selectedTicket = this.state.mainTicketList.filter(ticket => ticket.id === id)[0];
     this.setState({selectedTicket: selectedTicket});
@@ -46,7 +54,9 @@ class TicketControl extends React.Component {
     }
 
     if(this.state.selectedTicket != null) {
-      ticketDetailState = <TicketDetail ticket = {this.state.selectedTicket} />
+      ticketDetailState = <TicketDetail 
+        ticket = {this.state.selectedTicket} 
+        onClickingDelete = {this.handleDeletingTicket}/>
     }
 
     return (

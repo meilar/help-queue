@@ -7,7 +7,8 @@ function Ticket(props){
     <React.Fragment>
       <div className="card">
         <div className="card-body">
-          <a onClick= {() => props.whenTicketClicked(props.id)} className="text-decoration-none">{props.location} | {props.names}</a>
+{/* eslint-disable-next-line */}
+          <a  onClick= {() => props.whenTicketClicked(props.id)} className="text-decoration-none">{props.location} | {props.names}</a>
           <p className="card-body">{props.issue}</p>
         </div>
       </div>
