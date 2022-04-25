@@ -7,7 +7,7 @@ function Ticket(props){
     <React.Fragment>
       <div className="card">
         <div className="card-body">
-          <p className="lead card-text">{props.location} | {props.names}</p>
+          <a onClick= {() => props.whenTicketClicked(props.id)} className="text-decoration-none">{props.location} | {props.names}</a>
           <p className="card-body">{props.issue}</p>
         </div>
       </div>
@@ -18,7 +18,9 @@ function Ticket(props){
 Ticket.propTypes = {
   names: PropTypes.string.isRequired,
   location: PropTypes.string,
-  issue: PropTypes.string
+  issue: PropTypes.string,
+  id: PropTypes.string,
+  whenTicketClicked: PropTypes.func
 };
 
 export default Ticket;
