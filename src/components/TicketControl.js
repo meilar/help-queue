@@ -35,8 +35,16 @@ class TicketControl extends React.Component {
     }
     return (
       <React.Fragment>
-        {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <div className="row">
+          <div className="col-4">
+            <p className="lead">Get help now. List of outstanding help tickets is displayed to the right.</p>
+          </div>
+          <div className="col-4">
+          {currentlyVisibleState}
+          <button className="btn btn-warning" onClick={this.handleClick}>{buttonText}</button>
+          </div>
+        </div>
+
       </React.Fragment>
     )
   }

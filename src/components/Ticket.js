@@ -5,10 +5,12 @@ function Ticket(props){
   
   return (
     <React.Fragment>
-      <h3>{props.location}</h3>
-      <h3>{props.names}</h3>
-      <p><em>{props.issue}</em></p>
-      <hr />
+      <div className="card">
+        <div className="card-body">
+          <p className="lead card-text">{props.location} | {props.names}</p>
+          <p className="card-body">{props.issue}</p>
+        </div>
+      </div>
     </React.Fragment>
   );
 }
