@@ -1,9 +1,9 @@
 import React from "react";
 import { v4 } from 'uuid';
 import PropTypes from "prop-types";
+import ReusableForm from "./ReusableForm";
 
 class NewTicketForm extends React.Component{
-
 
   handleNewTicketFormSubmission = (event) => {
     event.preventDefault();
@@ -18,23 +18,9 @@ class NewTicketForm extends React.Component{
   render() {
     return (
       <React.Fragment>
-        <form onSubmit={this.handleNewTicketFormSubmission}>
-          <input
-            className="form-control tixForm"
-            type="text"
-            name="names"
-            placeholder='Pair Names' />
-          <input
-            className="form-control tixForm"
-            type='text'
-            name='location'
-            placeholder='Location' />
-          <textarea
-            className="form-control tixForm"
-            name='issue'
-            placeholder='Describe your issue.' />
-          <button className="btn btn-primary tixForm" type='submit'>Help!</button>
-        </form>
+        <ReusableForm
+          formSubmissionHandler={this.handleNewTicketFormSubmission}
+          buttonText="Help!" />
       </React.Fragment>
     )}
 }
