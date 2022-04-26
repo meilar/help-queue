@@ -37,3 +37,8 @@ margin-top: 10%;
 .detailCard {
   background-color: lightgrey;
 }
+
+.detailCard a {
+  margin-left: 4%;
+  margin-right: 4%;
+}

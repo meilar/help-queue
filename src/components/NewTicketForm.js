@@ -20,7 +20,10 @@ class NewTicketForm extends React.Component{
       <React.Fragment>
         <ReusableForm
           formSubmissionHandler={this.handleNewTicketFormSubmission}
-          buttonText="Help!" />
+          buttonText="Help!"
+          namesValue = ''
+          locationValue = ''
+          issueValue = '' />
       </React.Fragment>
     )}
 }

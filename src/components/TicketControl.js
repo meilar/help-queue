@@ -2,6 +2,7 @@ import React from "react";
 import NewTicketForm from "./NewTicketForm";
 import TicketList from "./TicketList";
 import TicketDetail from "./TicketDetail"
+import EditTicketForm from "./EditTicketForm"
 
 class TicketControl extends React.Component {
   constructor(props) {
@@ -9,8 +10,28 @@ class TicketControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       mainTicketList: [],
-      selectedTicket: null
+      selectedTicket: null,
+      editing: false,
+      editingTicket: null
     };
+  }
+
+  handleSaveEdit = (editedTicket) => {
+    const editedMainTicketList = this.state.mainTicketList
+      .filter(ticket => ticket.id !== this.state.editingTicket)
+      .concat(editedTicket);
+    this.setState({
+      mainTicketList: editedMainTicketList,
+      editing: false,
+      editingTicket: null
+    });
+
+  }
+
+  handleEditClick = (id) => {
+    const editingTicket = this.state.mainTicketList.filter(ticket => ticket.id === id)[0];
+    this.setState({editingTicket: editingTicket});
+    this.setState({editing: true});
   }
 
   handleDeletingTicket = (id) => {
@@ -56,7 +77,15 @@ class TicketControl extends React.Component {
     if(this.state.selectedTicket != null) {
       ticketDetailState = <TicketDetail 
         ticket = {this.state.selectedTicket} 
-        onClickingDelete = {this.handleDeletingTicket}/>
+        onClickingDelete = {this.handleDeletingTicket}
+        onClickingEdit = {this.handleEditClick} />
+    }
+
+    if(this.state.editing) {
+      ticketDetailState = <EditTicketForm
+        ticket = {this.state.editingTicket}
+        handleSaveEdit = {this.handleSaveEdit} />
+      buttonText = "Save Changes"
     }
 
     return (
