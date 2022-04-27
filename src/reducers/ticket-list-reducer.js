@@ -12,7 +12,7 @@ export default (state = {}, action) => {
         });
     case 'DELETE_TICKET':
       let newState = {...state};
-      delete newState [id];
+      delete newState[id];
       return newState;
     default:
       return state;      
