@@ -1,6 +1,7 @@
-import * as actions from './../../actions';
+import * as actions from '../../actions/index';
 
 describe('help queue actions', () => {
+
   it('deleteTicket should create DELETE_TICKET action', ()=>{
     expect(actions.deleteTicket(1)).toEqual({
       type: 'DELETE_TICKET',
@@ -23,5 +24,4 @@ describe('help queue actions', () => {
       id: 1
     });
   });
-  
 });

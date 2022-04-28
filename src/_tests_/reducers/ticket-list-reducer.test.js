@@ -1,6 +1,9 @@
 import ticketListReducer from '../../reducers/ticket-list-reducer';
+import * as c from '../../actions/ActionTypes';
 
 describe('ticketListReducer', () => {
+
+
   const currentState = {
     1: {names: 'Ryan & Aimen',
     location: '4b',
@@ -11,7 +14,9 @@ describe('ticketListReducer', () => {
     issue: 'Reducer has side effects.',
     id: 2 }
   }
+
   let action;
+
   const ticketData = {
     names: "Matt & Alex",
     location: '8309',
@@ -26,7 +31,7 @@ describe('ticketListReducer', () => {
   test("Should add new ticket to mainTicketList", () => {
     const { names, location, issue, id } = ticketData;
     action = {
-      type: 'ADD_TICKET',
+      type: c.ADD_TICKET,
       names: names,
       location: location,
       issue: issue,
@@ -45,7 +50,7 @@ describe('ticketListReducer', () => {
     test("Should update ticket", () => {
       const newName = "New name for test";
       action = {
-        type: "ADD_TICKET",
+        type: c.ADD_TICKET,
         names: newName,
         location: '4b',
         issue: 'Redux action is not working correctly.',
@@ -68,7 +73,7 @@ describe('ticketListReducer', () => {
 
     test('Should successfully delete a ticket', () => {
       action = {
-        type: 'DELETE_TICKET',
+        type: c.DELETE_TICKET,
         id: 1
       };
       expect(ticketListReducer(currentState, action)).toEqual({
