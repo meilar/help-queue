@@ -6,6 +6,7 @@ import EditTicketForm from "./EditTicketForm";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as a from './../actions'
+// import Moment from 'moment';
 
 class TicketControl extends React.Component {
   constructor(props) {
@@ -16,6 +17,21 @@ class TicketControl extends React.Component {
       editingTicket: null
     };
   }
+
+  componentDidMount() {
+    this.waitTimeUpdateTimer = setInterval(() => 
+      this.updateTicketElapsedWaitTime(),
+      1000
+    )};
+
+  componentWillUnmount(){
+    console.log('Component unmounted!');
+    clearInterval(this.waitTimeUpdateTimer);
+  };
+
+  updateTicketElapsedWaitTime = () => {
+    console.log("tick")
+  };
 
   handleClick = () => {
     const { dispatch } = this.props;

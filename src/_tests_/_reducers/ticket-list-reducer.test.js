@@ -21,11 +21,31 @@ describe('ticketListReducer', () => {
     names: "Matt & Alex",
     location: '8309',
     issue: "Redux suxx!",
-    id: 1
+    id: 1,
+    timeOpen: 0
   }
   
   test('Should return defailt state if there is no action type passed into reducer', () => {
     expect(ticketListReducer({}, {type:null})).toEqual({});
+  });
+
+  test('Should add a formatted wait time to ticket entry', () => {
+    const { names, location, issue, timeOpen, id } = ticketData;
+    action = {
+      type: c.UPDATE_TIME,
+      formattedWaitTime: '4 minutes',
+      id: id
+    };
+    expect(ticketListReducer({ [id] : ticketData }, action)).toEqual({
+      [id] : {
+        names: names,
+        location: location,
+        issue: issue,
+        timeOpen: timeOpen,
+        id: id,
+        formattedWaitTime: '4 minutes'
+      }
+    });
   });
 
   test("Should add new ticket to mainTicketList", () => {
