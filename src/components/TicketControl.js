@@ -10,20 +10,20 @@ class TicketControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false,
       selectedTicket: null,
       editing: false,
       editingTicket: null
     };
   }
 
-  //CREATE
-
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    const { dispatch } = this.props;
+    const action = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action);
   }
+  //CREATE
 
   handleAddNewTicketToList = (newTicket) => {
     const { dispatch } = this.props;
@@ -36,7 +36,10 @@ class TicketControl extends React.Component {
       issue: issue
     }
     dispatch(action);
-    this.setState({formVisibleOnPage: false});
+    const action2 = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action2);
   }
 
   //READ
@@ -85,7 +88,7 @@ class TicketControl extends React.Component {
     let buttonText = null;
     let ticketDetailState = null;
 
-    if (this.state.formVisibleOnPage) {
+    if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewTicketForm 
         onNewTicketCreation={this.handleAddNewTicketToList} />
       buttonText = "Return to Ticket List";
@@ -129,12 +132,14 @@ class TicketControl extends React.Component {
 }
 
 TicketControl.propTypes = {
-  mainTicketList: PropTypes.object
+  mainTicketList: PropTypes.object,
+  formVisibleOnPage: PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
-    mainTicketList: state
+    mainTicketList: state.mainTicketList,
+    formVisibleOnPage: state.formVisibleOnPage
   }
 }
 
